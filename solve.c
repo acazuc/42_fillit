@@ -6,35 +6,53 @@
 /*   By: acazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 11:36:42 by acazuc            #+#    #+#             */
-/*   Updated: 2015/12/04 11:16:58 by qjacob           ###   ########.fr       */
+/*   Updated: 2015/12/05 11:24:45 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft/libft.h"
 #include "error_quit.h"
 #include "piece_list.h"
+#include "print_tab.h"
+#include "can_place.h"
 #include "piece.h"
 #include "env.h"
 
-int			can_place(t_env *env, t_piece *piece, int x, int y)
+void		reset(t_env *env, int size)
 {
-	int 			test_x;
-	int				test_y;
+	int				x;
+	int				y;
 
-	test_y = 0;
-	while (test_y < piece->height)
+	y = 0;
+	while (y < size)
 	{
-		test_x = 0;
-		while (test_x < piece->width)
+		x = 0;
+		while (x < size)
 		{
-			if (piece->data[test_y][test_x] == '#')
-				if (env->tab[y + test_y][x + test_x] != '.')
-					return (0);
-			test_x++;
+			env->tab[y][x] = '.';
+			x++;
 		}
-		test_y++;
+		y++;
 	}
-	return (1);
+}
+
+void		put_in_tab(t_env *env, t_piece *piece, int x, int y)
+{
+	int				dx;
+	int				dy;
+
+	dy = 0;
+	while (dy < piece->height)
+	{
+		dx = 0;
+		while (dx < piece->width)
+		{
+			env->tab[y + dy][x + dx] = '#';
+			dx++;
+		}
+		dy++;
+	}
 }
 
 int			place_piece(t_piece *piece, t_env *env, int test_size)
@@ -43,13 +61,16 @@ int			place_piece(t_piece *piece, t_env *env, int test_size)
 	int				y;
 
 	y = 0;
-	while (y < test_size - piece->height)
+	while (y <= test_size - piece->height)
 	{
 		x = 0;
-		while (x < test_size - piece->width)
+		while (x <= test_size - piece->width)
 		{
 			if (can_place(env, piece, x, y))
+			{
+				put_in_tab(env, piece, x, y);
 				return (1);
+			}
 			x++;
 		}
 		y++;
@@ -69,9 +90,10 @@ int			place_pieces(t_env *env)
 		while (list)
 		{
 			if (!place_piece(list->piece, env, test_size))
-				return (test_size + 1);
+				return (test_size);
 			list = list->next;
 		}
+		reset(env, test_size);
 		test_size--;
 	}
 	return (-1);
@@ -80,26 +102,27 @@ int			place_pieces(t_env *env)
 void		solve(t_env *env)
 {
 	t_piece_list	*list;
-	t_piece 		*piece;
 	int				total_width;
+	int				size;
 	int				y;
 
 	total_width = 0;
-	list = list->env;
+	list = env->pieces;
 	while (list)
 	{
-		total_width = total_width + piece->width;
+		total_width += list->piece->height > list->piece->width
+			? list->piece->height : list->piece->width;
 		list = list->next;
 	}
-	if ((tab = malloc(sizeof(*tab) * total_width)) == NULL)
+	if ((env->tab = malloc(sizeof(*(env->tab)) * total_width)) == NULL)
 		error_quit("Failed to malloc tab");
-	y = 0;
-	while (y < total_width)
-	{
-		if ((tab[y] = malloc(sizeof(**tab) * total_width)) == NULL)
+	y = -1;
+	while (++y < total_width)
+		if ((env->tab[y] = malloc(sizeof(**(env->tab)) * total_width)) == NULL)
 			error_quit("Failed to malloc tab");
-		y++;
-	}
-	env->tab_dimension = total_width;
-	print_tab(place_piece(list, env));
+	reset(env, total_width);
+	env->tab_dimensions = total_width;
+	size = place_pieces(env);
+	reset(env, total_width);
+	print_tab(env, size);
 }

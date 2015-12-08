@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   print_tab.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/03 06:50:27 by acazuc            #+#    #+#             */
-/*   Updated: 2015/12/05 08:46:34 by acazuc           ###   ########.fr       */
+/*   Created: 2015/12/05 09:58:45 by acazuc            #+#    #+#             */
+/*   Updated: 2015/12/05 10:01:24 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ENV_H
-# define FT_ENV_H
+#ifndef FT_PRINT_TAB_H
+# define FT_PRINT_TAB_H
 
-# include "piece_list.h"
+# include "env.h"
 
-typedef struct		s_env
-{
-	t_piece_list	*pieces;
-	char			**tab;
-	int				tab_dimensions;
-}					t_env;
+void	print_tab(t_env *env, int size);
 
 #endif

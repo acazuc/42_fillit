@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   can_place.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/03 06:50:27 by acazuc            #+#    #+#             */
-/*   Updated: 2015/12/05 08:46:34 by acazuc           ###   ########.fr       */
+/*   Created: 2015/12/05 09:19:36 by acazuc            #+#    #+#             */
+/*   Updated: 2015/12/05 11:09:53 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ENV_H
-# define FT_ENV_H
+#ifndef FT_CAN_PLACE_H
+# define FT_CAN_PLACE_H
 
-# include "piece_list.h"
+# include "piece.h"
+# include "env.h"
 
-typedef struct		s_env
-{
-	t_piece_list	*pieces;
-	char			**tab;
-	int				tab_dimensions;
-}					t_env;
+int	can_place(t_env *env, t_piece *piece, int x, int y);
 
 #endif

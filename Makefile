@@ -6,7 +6,7 @@
 #    By: acazuc <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 06:50:12 by acazuc            #+#    #+#              #
-#    Updated: 2015/12/03 11:38:23 by acazuc           ###   ########.fr        #
+#    Updated: 2015/12/05 10:04:07 by acazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fillit
 
 FLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c load.c error_quit.c add_piece.c is_valid_piece.c parse_piece.c solve.c
+SRCS = main.c load.c error_quit.c add_piece.c is_valid_piece.c parse_piece.c solve.c can_place.c print_tab.c
 
 OBJS = $(SRCS:.c=.o)
 

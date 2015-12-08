@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   dot.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/03 06:50:27 by acazuc            #+#    #+#             */
-/*   Updated: 2015/12/05 08:46:34 by acazuc           ###   ########.fr       */
+/*   Created: 2015/12/05 11:11:34 by acazuc            #+#    #+#             */
+/*   Updated: 2015/12/05 11:25:12 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ENV_H
-# define FT_ENV_H
+#ifndef FT_DOT_H
+# define FT_DOT_H
 
-# include "piece_list.h"
-
-typedef struct		s_env
+typedef struct		s_dot
 {
-	t_piece_list	*pieces;
-	char			**tab;
-	int				tab_dimensions;
-}					t_env;
+	int				x;
+	int				y;
+}					t_dot;
 
 #endif
