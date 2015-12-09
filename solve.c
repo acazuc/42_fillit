@@ -6,7 +6,7 @@
 /*   By: acazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 11:36:42 by acazuc            #+#    #+#             */
-/*   Updated: 2015/12/09 09:55:32 by acazuc           ###   ########.fr       */
+/*   Updated: 2015/12/09 12:00:43 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,11 +116,11 @@ void		solve(t_env *env)
 		list = list->next;
 	}
 	if ((env->tab = malloc(sizeof(*(env->tab)) * total_width)) == NULL)
-		error_quit("Failed to malloc tab");
+		error_quit("error");
 	y = -1;
 	while (++y < total_width)
 		if ((env->tab[y] = malloc(sizeof(**(env->tab)) * total_width)) == NULL)
-			error_quit("Failed to malloc tab");
+			error_quit("error");
 	reset(env, total_width);
 	env->tab_dimensions = total_width;
 	size = place_pieces(env);

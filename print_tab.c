@@ -6,7 +6,7 @@
 /*   By: acazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 09:15:00 by acazuc            #+#    #+#             */
-/*   Updated: 2015/12/05 11:25:39 by acazuc           ###   ########.fr       */
+/*   Updated: 2015/12/09 12:00:10 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	put_piece(t_piece *piece, t_env *env, int size, char character)
 	int				y;
 
 	if (!(dot = malloc(sizeof(*dot))))
-		error_quit("Failed to malloc dot");
+		error_quit("error");
 	y = 0;
 	while (y <= size - piece->height)
 	{
