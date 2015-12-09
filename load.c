@@ -6,7 +6,7 @@
 /*   By: acazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 06:50:08 by acazuc            #+#    #+#             */
-/*   Updated: 2015/12/03 11:35:57 by acazuc           ###   ########.fr       */
+/*   Updated: 2015/12/09 09:09:10 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,28 @@
 #include "add_piece.h"
 #include "env.h"
 
+void		check_pieces_number(t_env *env)
+{
+	t_piece_list	*list;
+	int				count;
+
+	list = env->pieces;
+	count = 0;
+	while (list)
+	{
+		count++;
+		list = list->next;
+	}
+	if (count > 26)
+		error_quit("Maximum of 26 pieces");
+}
+
 void		load(t_env *env, char *file)
 {
-	char	*buffer;
-	int		prev_readed;
-	int		readed;
-	int		fd;
+	char			*buffer;
+	int				prev_readed;
+	int				readed;
+	int				fd;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
 		error_quit("Failed to open file");

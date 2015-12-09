@@ -6,11 +6,12 @@
 /*   By: acazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 11:36:42 by acazuc            #+#    #+#             */
-/*   Updated: 2015/12/05 11:24:45 by acazuc           ###   ########.fr       */
+/*   Updated: 2015/12/09 09:50:28 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "libft/libft.h"
 #include "error_quit.h"
 #include "piece_list.h"
@@ -90,7 +91,7 @@ int			place_pieces(t_env *env)
 		while (list)
 		{
 			if (!place_piece(list->piece, env, test_size))
-				return (test_size);
+				return (test_size + 1);
 			list = list->next;
 		}
 		reset(env, test_size);
@@ -106,7 +107,7 @@ void		solve(t_env *env)
 	int				size;
 	int				y;
 
-	total_width = 0;
+	total_width = 1;
 	list = env->pieces;
 	while (list)
 	{
