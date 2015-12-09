@@ -6,7 +6,7 @@
 /*   By: acazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 11:36:42 by acazuc            #+#    #+#             */
-/*   Updated: 2015/12/09 09:50:28 by acazuc           ###   ########.fr       */
+/*   Updated: 2015/12/09 09:55:32 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void		solve(t_env *env)
 	int				size;
 	int				y;
 
-	total_width = 1;
+	total_width = 0;
 	list = env->pieces;
 	while (list)
 	{
